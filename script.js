@@ -49,13 +49,17 @@ form.addEventListener('submit', async (event) => {
       body: JSON.stringify(payload),
     });
 
-    if (!response.ok) throw new Error('Ошибка отправки');
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Ошибка отправки');
+    }
 
     form.reset();
     togglePartnerField();
     toggleAlcoholOtherField();
     statusEl.textContent = 'Спасибо! Ваш ответ отправлен.';
   } catch (error) {
-    statusEl.textContent = 'Не получилось отправить. Попробуйте позже или напишите напрямую.';
+    statusEl.textContent = `Не получилось отправить: ${error.message}`;
   }
 });

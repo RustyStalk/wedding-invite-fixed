@@ -51,10 +51,7 @@ module.exports = async function handler(req, res) {
     const tgResponse = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text,
-      }),
+      body: JSON.stringify({ chat_id: chatId, text }),
     });
 
     if (!tgResponse.ok) {

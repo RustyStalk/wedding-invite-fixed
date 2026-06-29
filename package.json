@@ -1,6 +1,1 @@
-{
-  "name": "wedding-invite-maxim-ksenia",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module"
-}
+{"scripts":{"start":"vercel dev"},"dependencies":{}}
